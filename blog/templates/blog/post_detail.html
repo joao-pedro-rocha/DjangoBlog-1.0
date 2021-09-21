@@ -1,0 +1,17 @@
+<!--Herda o arquivo base.html-->
+<!--O arquivo post_detail.html mostra o conteúdo do post individualmente-->
+{% extends 'blog/base.html' %}
+
+<!--Bloco para o conteúdo do post-->
+<!--Chama a classe Post.title() criada no arquivo models.py para o título-->
+{% block title %}{{ post.title }}{% endblock %}
+
+<!--Chama Post.created() e Post.author() do arquivo models.py-->
+<!--Depois chama o Post.body() do arquivo models.py que mostra o que está escrito no post-->
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p class = "date">
+        Publicado em {{ post.created }} por {{ post.author }}
+    </p>
+    {{ post.body | linebreaks }}
+{% endblock %}
